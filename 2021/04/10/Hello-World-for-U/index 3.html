@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Arost">
+
+
+
+
+
+<title>Hello World for U | 星辰大海</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Arost&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Arost&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Hello World for U</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Arost</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 10, 2021&nbsp;&nbsp;14:36:10</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>Given any string of N (&gt;=5) characters, you are asked to form the characters into the shape of U. For example, “helloworld” can be printed as: h d e  l l r lowo That is, the characters must be printed in the original order, starting top-down from the left vertical line with n1 characters, then left to right along the bottom line with n2 characters, and finally bottom-up along the vertical line with n3 characters. And more, we would like U to be as squared as possible – that is, it must be satisfied that n1 = n3 = max { k| k &lt;= n2 for all 3 &lt;= n2 &lt;= N } with n1 + n2 + n3 - 2 = N.</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There are multiple test cases.Each case contains one string with no less than 5 and no more than 80 characters in a line. The string contains no white space.</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For each test case, print the input string in the shape of U as specified in the description.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例1</li>
+</ul>
+<h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">helloworld!</span><br><span class="line">www.nowcoder.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">h   !</span><br><span class="line">e   d</span><br><span class="line">l   l</span><br><span class="line">lowor</span><br><span class="line">w    m</span><br><span class="line">w    o</span><br><span class="line">w    c</span><br><span class="line">.    .</span><br><span class="line">n    r</span><br><span class="line">owcode</span><br></pre></td></tr></table></figure>
+
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>两边的高：n1、n2<br>底的宽：n3<br>给定一个字符串，原序不改变的情况下按U形输出。要求：<br>1、两边尽可能的高<br>2、底的宽&gt;=3<br>3、两边的高相同，且不能&gt;底的宽</p>
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        String s;</span><br><span class="line">        <span class="keyword">while</span> ((s = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> N = s.length();</span><br><span class="line">            <span class="keyword">int</span> axis = N / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> right, left;</span><br><span class="line">            <span class="keyword">if</span> (N % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                left = axis - <span class="number">2</span>;</span><br><span class="line">                right = axis + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = axis - <span class="number">1</span>;</span><br><span class="line">                right = axis + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> n2 = right - left + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> n1 = left + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> n3 = N - right;</span><br><span class="line"><span class="comment">//            System.out.println(n1 + &quot; &quot; + n2 + &quot; &quot; + n3);//5 3 5     7 4 7</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (n1 &gt; n2 &amp;&amp; n3 &gt; n2) &#123;</span><br><span class="line">                right++;</span><br><span class="line">                left--;</span><br><span class="line">                n2 = right - left + <span class="number">1</span>;</span><br><span class="line">                n1 = left + <span class="number">1</span>;</span><br><span class="line">                n3 = N - right;</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//            System.out.println(n1 + &quot; &quot; + n2 + &quot; &quot; + n3);//4 5 4      6 6 6</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            StringBuilder space = <span class="keyword">new</span> StringBuilder(<span class="string">&quot;&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n2 - <span class="number">2</span>; i++) &#123;</span><br><span class="line">                space.append(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>, r = N - <span class="number">1</span>; l &lt; left &amp;&amp; r &gt; right; l++, r--) &#123;</span><br><span class="line">                System.out.print(s.charAt(l));</span><br><span class="line">                System.out.print(space);</span><br><span class="line">                System.out.println(s.charAt(r));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt;= right; i++) &#123;</span><br><span class="line">                System.out.print(s.charAt(i));</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Arost</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E6%8B%9F/"># 字符串模拟</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/11/%E8%BF%98%E6%98%AF%E7%95%85%E6%83%B3%E5%B7%A5%E7%A8%8B/">还是畅想工程</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/04/%E7%95%85%E6%83%B3%E5%B7%A5%E7%A8%8B/">畅想工程</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Arost | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

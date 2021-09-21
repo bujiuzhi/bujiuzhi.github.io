@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Arost">
+
+
+
+
+
+<title>1010_Radix | 星辰大海</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Arost&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Arost&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">1010_Radix</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Arost</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">May 30, 2021&nbsp;&nbsp;13:10:05</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/PTA/">PTA</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>Given a pair of positive integers, for example, 6 and 110, can this equation 6 = 110 be true? The answer is <code>yes</code>, if 6 is a decimal number and 110 is a binary number.</p>
+<p>Now for any pair of positive integers <em>N</em>1 and <em>N</em>2, your task is to find the radix of one number while that of the other is given.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. Each case occupies a line which contains 4 positive integers:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">N1 N2 tag radix</span><br></pre></td></tr></table></figure>
+
+<p>Here <code>N1</code> and <code>N2</code> each has no more than 10 digits. A digit is less than its radix and is chosen from the set { 0-9, <code>a</code>-<code>z</code> } where 0-9 represent the decimal numbers 0-9, and <code>a</code>-<code>z</code> represent the decimal numbers 10-35. The last number <code>radix</code> is the radix of <code>N1</code> if <code>tag</code> is 1, or of <code>N2</code> if <code>tag</code> is 2.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, print in one line the radix of the other number so that the equation <code>N1</code> = <code>N2</code> is true. If the equation is impossible, print <code>Impossible</code>. If the solution is not unique, output the smallest possible radix.</p>
+<h3 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1:"></a>Sample Input 1:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6 110 1 10</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1:"></a>Sample Output 1:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2:"></a>Sample Input 2:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 ab 1 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Impossible</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">convert10</span><span class="params">(string s, <span class="keyword">long</span> <span class="keyword">long</span> radix)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = s.<span class="built_in">length</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">int</span> curNum = (s[i] &lt;= <span class="string">&#x27;9&#x27;</span> &amp;&amp; s[i] &gt;= <span class="string">&#x27;0&#x27;</span>) ? s[i] - <span class="string">&#x27;0&#x27;</span> : s[i] - <span class="string">&#x27;a&#x27;</span> + <span class="number">10</span>;</span><br><span class="line">        num += curNum * <span class="built_in">pow</span>(radix, k++);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    for (auto it = s.rbegin(); it != s.rend(); it++) &#123;</span></span><br><span class="line"><span class="comment">//        int curNum = isdigit(*it) ? *it - &#x27;0&#x27; : *it - &#x27;a&#x27; + 10;</span></span><br><span class="line"><span class="comment">//        num += curNum * pow(radix, k++);</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">findRadix</span><span class="params">(string s, <span class="keyword">long</span> <span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> t = *<span class="built_in">max_element</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());<span class="comment">//找到最大的那个成员</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> left = ((t &lt;= <span class="string">&#x27;9&#x27;</span> &amp;&amp; t &gt;= <span class="string">&#x27;0&#x27;</span>) ? t - <span class="string">&#x27;0&#x27;</span> : t - <span class="string">&#x27;a&#x27;</span> + <span class="number">10</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//记得+1，因为，既然原数里面出现了这个字符，那么其进制必然大于这个字符，比如出现了9，那它的进制最少是10</span></span><br><span class="line"><span class="comment">//    long long left = (isdigit(t) ? t - &#x27;0&#x27; : t - &#x27;a&#x27; + 10) + 1;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> right = <span class="built_in">max</span>(n, left);<span class="comment">//找到上限，不可能比n还大</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        <span class="keyword">long</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> temp = <span class="built_in">convert10</span>(s, mid);</span><br><span class="line">        <span class="keyword">if</span> (n == temp)<span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (temp &gt; n || temp &lt; <span class="number">0</span>)right = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    string n1, n2;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> tag, radix;</span><br><span class="line">    cin &gt;&gt; n1 &gt;&gt; n2 &gt;&gt; tag &gt;&gt; radix;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> re = tag == <span class="number">1</span> ? <span class="built_in">findRadix</span>(n2, <span class="built_in">convert10</span>(n1, radix)) : <span class="built_in">findRadix</span>(n1, <span class="built_in">convert10</span>(n2, radix));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (re == <span class="number">-1</span>) &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;Impossible&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cout &lt;&lt; re;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Arost</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"># 字符串</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/05/30/1011-World-Cup-Betting/">1011_World_Cup_Betting</a>
+            
+            
+            <a class="next" rel="next" href="/2021/05/27/Sqrt/">Sqrt</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Arost | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

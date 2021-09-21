@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Arost">
+
+
+
+
+
+<title>I wanna go home | 星辰大海</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Arost&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Arost&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">I wanna go home</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Arost</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 23, 2021&nbsp;&nbsp;0:37:20</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <table>
+<thead>
+<tr>
+<th><strong>Time Limit:</strong> 1000MS</th>
+<th></th>
+<th><strong>Memory Limit:</strong> 65536K</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Total Submissions:</strong> 3812</td>
+<td></td>
+<td><strong>Accepted:</strong> 1619</td>
+</tr>
+</tbody></table>
+<p>Description</p>
+<p>The country is facing a terrible civil war—-cities in the country are divided into two parts supporting different leaders. As a merchant, Mr. M does not pay attention to politics but he actually knows the severe situation, and your task is to help him reach home as soon as possible. </p>
+<p>“For the sake of safety,”, said Mr.M, “your route should contain at most 1 road which connects two cities of different camp.”</p>
+<p>Would you please tell Mr. M at least how long will it take to reach his sweet home?</p>
+<p>Input</p>
+<p>The input contains multiple test cases.</p>
+<p>The first line of each case is an integer <em>N</em> (2&lt;=<em>N</em>&lt;=600), representing the number of cities in the country.</p>
+<p>The second line contains one integer <em>M</em> (0&lt;=<em>M</em>&lt;=10000), which is the number of roads.</p>
+<p>The following <em>M</em> lines are the information of the roads. Each line contains three integers <em>A</em>, <em>B</em> and <em>T</em>, which means the road between city <em>A</em> and city <em>B</em> will cost time <em>T</em>. <em>T</em> is in the range of [1,500].</p>
+<p>Next part contains <em>N</em> integers, which are either 1 or 2. The <em>i</em>-th integer shows the supporting leader of city <em>i</em>. </p>
+<p>To simplify the problem, we assume that Mr. M starts from city 1 and his target is city 2. City 1 always supports leader 1 while city 2 is at the same side of leader 2. </p>
+<p>Note that all roads are bidirectional and there is at most 1 road between two cities.</p>
+<p>Input is ended with a case of <em>N</em>=0.</p>
+<p>Output</p>
+<p>For each test case, output one integer representing the minimum time to reach home.</p>
+<p>If it is impossible to reach home according to Mr. M’s demands, output -1 instead.</p>
+<p>Sample Input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1</span><br><span class="line">1 2 100</span><br><span class="line">1 2</span><br><span class="line">3</span><br><span class="line">3</span><br><span class="line">1 2 100</span><br><span class="line">1 3 40</span><br><span class="line">2 3 50</span><br><span class="line">1 2 1</span><br><span class="line">5</span><br><span class="line">5</span><br><span class="line">3 1 200</span><br><span class="line">5 3 150</span><br><span class="line">2 5 160</span><br><span class="line">4 3 170</span><br><span class="line">4 2 170</span><br><span class="line">1 2 2 2 1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<p>Sample Output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">100</span><br><span class="line">90</span><br><span class="line">540</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Code</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] G;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] dist;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] visited;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> N;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] lead;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        String s;</span><br><span class="line">        <span class="keyword">while</span> ((s = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.equals(<span class="string">&quot;0&quot;</span>)) <span class="keyword">break</span>;</span><br><span class="line">            N = Integer.parseInt(s);<span class="comment">//该国的城市数量</span></span><br><span class="line">            <span class="keyword">int</span> M = Integer.parseInt(br.readLine());<span class="comment">//M条道路</span></span><br><span class="line">            G = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>][N + <span class="number">1</span>];</span><br><span class="line"><span class="comment">//            Arrays.fill(G, -1);二维数组不能这么用</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= N; j++) &#123;</span><br><span class="line">                    G[i][j] = Integer.MAX_VALUE;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) &#123;   <span class="comment">//录入M条路线的情况</span></span><br><span class="line">                String[] ss = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                <span class="keyword">int</span> x = Integer.parseInt(ss[<span class="number">0</span>]);</span><br><span class="line">                <span class="keyword">int</span> y = Integer.parseInt(ss[<span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">int</span> value = Integer.parseInt(ss[<span class="number">2</span>]);</span><br><span class="line">                G[x][y] = value;</span><br><span class="line">                G[y][x] = value;</span><br><span class="line">            &#125;</span><br><span class="line">            String[] sss = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            lead = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;   <span class="comment">//录入N个城市的情况</span></span><br><span class="line">                lead[i] = Integer.parseInt(sss[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//录入结束</span></span><br><span class="line"></span><br><span class="line">            visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[N + <span class="number">1</span>];</span><br><span class="line">            Arrays.fill(visited, <span class="keyword">false</span>);</span><br><span class="line">            dist = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>];</span><br><span class="line">            Arrays.fill(dist, Integer.MAX_VALUE);</span><br><span class="line">            <span class="comment">//初始化结束</span></span><br><span class="line"></span><br><span class="line">            dijkstra();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (dist[<span class="number">2</span>] == Integer.MAX_VALUE) System.out.println(-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span> System.out.println(dist[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">int</span> u = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= N; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!visited[j] &amp;&amp; dist[j] &lt; min) &#123;</span><br><span class="line">                    u = j;</span><br><span class="line">                    min = dist[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (u == -<span class="number">1</span>) <span class="keyword">break</span>;<span class="comment">//全部找到最短路径</span></span><br><span class="line">            visited[u] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= N; v++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (lead[u] == <span class="number">2</span> &amp;&amp; lead[v] == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line"><span class="comment">//                //只存在1-&gt;2</span></span><br><span class="line"><span class="comment">//                //若u-&gt;v(2-&gt;1)则错</span></span><br><span class="line">                <span class="keyword">if</span> (!visited[v] &amp;&amp; G[u][v] != Integer.MAX_VALUE &amp;&amp; dist[u] + G[u][v] &lt; dist[v]) &#123;</span><br><span class="line">                    dist[v] = dist[u] + G[u][v];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>原题链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=3767">http://poj.org/problem?id=3767</a></p>
+<p>牛客上10个过了8个，有个超大数据一直过不了，但是在北大那边一下就过了</p>
+<p><img src="https://img-blog.csdnimg.cn/2021042300503337.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210423005044980.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMzIyODMx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>下面代码可以完美通过  33-35行做了修改</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[][] G;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] dist;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">boolean</span>[] visited;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> N;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] lead;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        String s;</span><br><span class="line">        <span class="keyword">while</span> ((s = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.equals(<span class="string">&quot;0&quot;</span>)) <span class="keyword">break</span>;</span><br><span class="line">            N = Integer.parseInt(s);<span class="comment">//该国的城市数量</span></span><br><span class="line">            <span class="keyword">int</span> M = Integer.parseInt(br.readLine());<span class="comment">//M条道路</span></span><br><span class="line">            G = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>][N + <span class="number">1</span>];</span><br><span class="line"><span class="comment">//            Arrays.fill(G, -1);二维数组不能这么用</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= N; j++) &#123;</span><br><span class="line">                    G[i][j] = Integer.MAX_VALUE;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) &#123;   <span class="comment">//录入M条路线的情况</span></span><br><span class="line">                String[] ss = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                <span class="keyword">int</span> x = Integer.parseInt(ss[<span class="number">0</span>]);</span><br><span class="line">                <span class="keyword">int</span> y = Integer.parseInt(ss[<span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">int</span> value = Integer.parseInt(ss[<span class="number">2</span>]);</span><br><span class="line"><span class="comment">//                 G[x][y] = value;</span></span><br><span class="line"><span class="comment">//                 G[y][x] = value;</span></span><br><span class="line">                <span class="keyword">if</span>(G[x][y] &gt; value)G[x][y] = G[y][x] = value;</span><br><span class="line">            &#125;</span><br><span class="line">            String[] sss = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            lead = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;   <span class="comment">//录入N个城市的情况</span></span><br><span class="line">                lead[i] = Integer.parseInt(sss[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//录入结束</span></span><br><span class="line"></span><br><span class="line">            visited = <span class="keyword">new</span> <span class="keyword">boolean</span>[N + <span class="number">1</span>];</span><br><span class="line">            Arrays.fill(visited, <span class="keyword">false</span>);</span><br><span class="line">            dist = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>];</span><br><span class="line">            Arrays.fill(dist, Integer.MAX_VALUE);</span><br><span class="line">            <span class="comment">//初始化结束</span></span><br><span class="line"></span><br><span class="line">            dijkstra();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (dist[<span class="number">2</span>] == Integer.MAX_VALUE) System.out.println(-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span> System.out.println(dist[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">int</span> u = -<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= N; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!visited[j] &amp;&amp; dist[j] &lt; min) &#123;</span><br><span class="line">                    u = j;</span><br><span class="line">                    min = dist[j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (u == -<span class="number">1</span>) <span class="keyword">break</span>;<span class="comment">//全部找到最短路径</span></span><br><span class="line">            visited[u] = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= N; v++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (lead[u] == <span class="number">2</span> &amp;&amp; lead[v] == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line"><span class="comment">//                //只存在1-&gt;2</span></span><br><span class="line"><span class="comment">//                //若u-&gt;v(2-&gt;1)则错</span></span><br><span class="line">                <span class="keyword">if</span> (!visited[v] &amp;&amp; G[u][v] != Integer.MAX_VALUE &amp;&amp; dist[u] + G[u][v] &lt; dist[v]) &#123;</span><br><span class="line">                    dist[v] = dist[u] + G[u][v];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Arost</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Dijkstra/"># Dijkstra</a>
+                    
+                        <a href="/tags/%E5%9B%BE/"># 图</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/23/%E6%97%A5%E5%BF%97%E6%8E%92%E5%BA%8F/">日志排序</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/20/%E6%9C%80%E5%B0%8F%E8%8A%B1%E8%B4%B9/">最小花费</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Arost | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Arost">
+
+
+
+
+
+<title>最小花费 | 星辰大海</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Arost&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Arost&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">最小花费</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Arost</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">April 20, 2021&nbsp;&nbsp;17:34:39</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>在某条线路上有N个火车站，有三种距离的路程，L1，L2，L3,对应的价格为C1,C2,C3.其对应关系如下: 距离S      票价C</p>
+<p> 0&lt;S&lt;=L1     C1 </p>
+<p>L1&lt;S&lt;=L2     C2</p>
+<p> L2&lt;S&lt;=L3     C3 </p>
+<p>输入保证0&lt;L1&lt;L2&lt;L3&lt;10^9,0&lt;C1&lt;C2&lt;C3&lt;10^9。</p>
+<p> 每两个站之间的距离不超过L3。 </p>
+<p>当乘客要移动的两个站的距离大于L3的时候，可以选择从中间一个站下车，然后买票再上车，所以乘客整个过程中至少会买两张票。 </p>
+<p>现在给你一个 L1，L2，L3，C1，C2,C3。然后是A B的值，其分别为乘客旅程的起始站和终点站。 然后输入N，N为该线路上的总的火车站数目，然后输入N-1个整数，分别代表从该线路上的第一个站，到第2个站，第3个站，……，第N个站的距离。 根据输入，输出乘客从A到B站的最小花费。</p>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">以如下格式输入数据：</span><br><span class="line">L1  L2  L3  C1  C2  C3</span><br><span class="line">A  B</span><br><span class="line">N</span><br><span class="line">a[2]</span><br><span class="line">a[3]</span><br><span class="line">……</span><br><span class="line">a[N]</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可能有多组测试数据，对于每一组数据，</span><br><span class="line">根据输入，输出乘客从A到B站的最小花费。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例1</li>
+</ul>
+<h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 1 2 3</span><br><span class="line">1 2</span><br><span class="line">2</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例2</li>
+</ul>
+<h2 id="输入：-1"><a href="#输入：-1" class="headerlink" title="输入："></a>输入：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">100 500 1000 100 450 800</span><br><span class="line">3 86</span><br><span class="line">100</span><br><span class="line">468</span><br><span class="line">865</span><br><span class="line">1644</span><br><span class="line">2556</span><br><span class="line">3328</span><br><span class="line">3607</span><br><span class="line">4447</span><br><span class="line">5430</span><br><span class="line">5695</span><br><span class="line">6626</span><br><span class="line">7142</span><br><span class="line">7973</span><br><span class="line">8802</span><br><span class="line">9523</span><br><span class="line">9724</span><br><span class="line">10046</span><br><span class="line">10054</span><br><span class="line">10955</span><br><span class="line">11387</span><br><span class="line">12032</span><br><span class="line">12182</span><br><span class="line">13078</span><br><span class="line">13465</span><br><span class="line">13850</span><br><span class="line">13944</span><br><span class="line">14630</span><br><span class="line">15306</span><br><span class="line">16104</span><br><span class="line">17072</span><br><span class="line">17662</span><br><span class="line">17857</span><br><span class="line">18412</span><br><span class="line">18635</span><br><span class="line">19217</span><br><span class="line">19641</span><br><span class="line">19655</span><br><span class="line">19962</span><br><span class="line">20961</span><br><span class="line">21343</span><br><span class="line">21687</span><br><span class="line">21824</span><br><span class="line">22502</span><br><span class="line">23486</span><br><span class="line">24241</span><br><span class="line">24829</span><br><span class="line">25824</span><br><span class="line">26393</span><br><span class="line">27251</span><br><span class="line">27569</span><br><span class="line">28451</span><br><span class="line">29274</span><br><span class="line">30025</span><br><span class="line">30986</span><br><span class="line">31526</span><br><span class="line">32252</span><br><span class="line">33224</span><br><span class="line">33573</span><br><span class="line">34404</span><br><span class="line">34685</span><br><span class="line">35563</span><br><span class="line">36088</span><br><span class="line">36176</span><br><span class="line">36193</span><br><span class="line">37077</span><br><span class="line">37336</span><br><span class="line">37847</span><br><span class="line">37947</span><br><span class="line">38595</span><br><span class="line">38918</span><br><span class="line">39476</span><br><span class="line">39983</span><br><span class="line">40332</span><br><span class="line">40388</span><br><span class="line">41014</span><br><span class="line">41217</span><br><span class="line">41577</span><br><span class="line">42546</span><br><span class="line">42646</span><br><span class="line">42912</span><br><span class="line">42949</span><br><span class="line">43137</span><br><span class="line">43180</span><br><span class="line">43583</span><br><span class="line">43805</span><br><span class="line">44400</span><br><span class="line">44892</span><br><span class="line">45357</span><br><span class="line">45471</span><br><span class="line">46208</span><br><span class="line">46938</span><br><span class="line">47774</span><br><span class="line">48157</span><br><span class="line">49129</span><br><span class="line">49638</span><br><span class="line">49980</span><br><span class="line">50741</span><br><span class="line">50991</span><br><span class="line">51961</span><br><span class="line">52174</span><br></pre></td></tr></table></figure>
+
+<h2 id="输出：-1"><a href="#输出：-1" class="headerlink" title="输出："></a>输出：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">43700</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] a;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> L1;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> L2;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> L3;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> C1;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> C2;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> C3;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">        String s;</span><br><span class="line">        <span class="keyword">while</span> ((s = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            String[] s1 = s.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            L1 = Integer.parseInt(s1[<span class="number">0</span>]);</span><br><span class="line">            L2 = Integer.parseInt(s1[<span class="number">1</span>]);</span><br><span class="line">            L3 = Integer.parseInt(s1[<span class="number">2</span>]);</span><br><span class="line">            C1 = Integer.parseInt(s1[<span class="number">3</span>]);</span><br><span class="line">            C2 = Integer.parseInt(s1[<span class="number">4</span>]);</span><br><span class="line">            C3 = Integer.parseInt(s1[<span class="number">5</span>]);</span><br><span class="line">            String[] s2 = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> A = Integer.parseInt(s2[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">int</span> B = Integer.parseInt(s2[<span class="number">1</span>]);</span><br><span class="line">            <span class="keyword">int</span> N = Integer.parseInt(br.readLine());</span><br><span class="line">            a = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= N; i++) &#123;</span><br><span class="line">                a[i] = Integer.parseInt(br.readLine());</span><br><span class="line">                <span class="comment">//a[i]表示第1站到第i站的距离 1～2为a[2]  1~3为a[3] ......</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//数据录入完毕</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[N + <span class="number">1</span> + A];</span><br><span class="line">            <span class="comment">//dp[i]表示A到第i站的最短花费</span></span><br><span class="line">            dp[A] = <span class="number">0</span>;<span class="comment">//A~A</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = A + <span class="number">1</span>; i &lt;= B; i++) &#123;</span><br><span class="line">                dp[i] = Integer.MAX_VALUE;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = A; j &lt;= i; j++) &#123;</span><br><span class="line">                    <span class="keyword">int</span> d = a[i] - a[j];</span><br><span class="line">                    <span class="keyword">if</span> (d &lt;= L3)</span><br><span class="line">                        dp[i] = Math.min(dp[i], dp[j] + cost(d));</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                       <span class="keyword">continue</span>;</span><br><span class="line"><span class="comment">//                         int cost = 0;</span></span><br><span class="line"><span class="comment">//                         for (int k = j; k &lt; i; k++) &#123;</span></span><br><span class="line"><span class="comment">//                             cost += cost(a[k + 1] - a[k]);</span></span><br><span class="line"><span class="comment">//                         &#125;</span></span><br><span class="line"><span class="comment">//                         dp[i] = Math.min(dp[i], dp[j] + cost);</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//两站间距离大于L3时就跳过，不用计算</span></span><br><span class="line">                    <span class="comment">//因为要下车再买票，一直到剩下的几站距离小于等于L3为止（一定会有两站间距离小于等于L3的，因为每两个站之间的距离不超过L3）</span></span><br><span class="line">                    <span class="comment">//假设要算2～9站的最少票价，乘客原本坐到了5站，发现剩余距离远大于L3，那乘客就得往后坐一站，再次做比较，发现还大于L3，继续坐一站。。。。</span></span><br><span class="line">                    <span class="comment">//直到剩余的距离小于L3，这里假设7～9的距离&lt;L3,这种情况下我买的票情况：2～5是最少花费（dp数组)+5～6的票价+6～7的票价+7～9的票价</span></span><br><span class="line">                    <span class="comment">//这种情况下一定不是最少票价，后期一定会被2~7的最少花费（dp数组)+7～9的票价所更新</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(dp[B]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">cost</span><span class="params">(<span class="keyword">int</span> distence)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> price = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (distence &lt;= L1) price = C1;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (distence &lt;= L2) price = C2;</span><br><span class="line">        <span class="keyword">else</span> price = C3;</span><br><span class="line">        <span class="keyword">return</span> price;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Arost</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9B%BE/"># 图</a>
+                    
+                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"># 动态规划</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/04/23/I-wanna-go-home/">I wanna go home</a>
+            
+            
+            <a class="next" rel="next" href="/2021/04/16/%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E5%AD%90%E5%BA%8F%E5%88%97%E5%92%8C/">最大连续子序列和</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Arost | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

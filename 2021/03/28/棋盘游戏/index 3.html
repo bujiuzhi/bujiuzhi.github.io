@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Arost">
+
+
+
+
+
+<title>棋盘游戏 | 星辰大海</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Arost&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Arost&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">棋盘游戏</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Arost</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 28, 2021&nbsp;&nbsp;16:38:21</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><pre><code>有一个6*6的棋盘，每个棋盘上都有一个数值，现在又一个起始位置和终止位置，请找出一个从起始位置到终止位置代价最小的路径：   
+  1、只能沿上下左右四个方向移动    
+  2、总代价是每走一步的代价之和     
+  3、每步（从a,b到c,d）的代价是c,d上的值与其在a,b上的状态的乘积     
+  4、初始状态为1     每走一步，状态按如下公式变化：（走这步的代价%4）+1。
+</code></pre>
+<h2 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述:"></a>输入描述:</h2><pre><code>每组数据一开始为6*6的矩阵，矩阵的值为大于等于1小于等于10的值，然后四个整数表示起始坐标和终止坐标。
+</code></pre>
+<h2 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述:"></a>输出描述:</h2><pre><code>输出最小代价。
+</code></pre>
+<ul>
+<li>示例1<h2 id="输入："><a href="#输入：" class="headerlink" title="输入："></a>输入：</h2></li>
+</ul>
+<blockquote>
+<p>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>1 1 1 1 1 1<br>0 0 5 5</p>
+</blockquote>
+<h2 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h2><blockquote>
+<p>23</p>
+</blockquote>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> mincost = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//录入</span></span><br><span class="line">        <span class="keyword">int</span>[][] map = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">6</span>][<span class="number">6</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;       <span class="comment">//转成二维数组</span></span><br><span class="line">            String[] s = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">6</span>; j++) &#123;</span><br><span class="line">                map[i][j] = Integer.parseInt(s[j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] ss = br.readLine().split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">        <span class="keyword">int</span> x = Integer.parseInt(ss[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">int</span> y = Integer.parseInt(ss[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">int</span> endx = Integer.parseInt(ss[<span class="number">2</span>]);</span><br><span class="line">        <span class="keyword">int</span> endy = Integer.parseInt(ss[<span class="number">3</span>]);</span><br><span class="line"></span><br><span class="line">        dfs(map, x, y, endx, endy, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        System.out.println(mincost);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span>[][] map, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> endx, <span class="keyword">int</span> endy, <span class="keyword">int</span> status, <span class="keyword">int</span> totalcost)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (x == endx &amp;&amp; y == endy &amp;&amp; totalcost &lt; mincost) &#123; <span class="comment">//在多数条可以走到终点的路径中找到最小代价的</span></span><br><span class="line">            mincost = totalcost;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (x - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; map[x - <span class="number">1</span>][y] &gt; <span class="number">0</span>) &#123;    <span class="comment">//左边可以走(左边不仅在范围内，还没被访问过) map[x1-1][y1]就是下一个位置</span></span><br><span class="line">            <span class="keyword">int</span> temp = map[x - <span class="number">1</span>][y];</span><br><span class="line">            <span class="keyword">int</span> cost = map[x - <span class="number">1</span>][y] * status; <span class="comment">//这一步的代价</span></span><br><span class="line">            <span class="keyword">if</span> (totalcost + cost &lt; mincost) &#123;</span><br><span class="line">                map[x - <span class="number">1</span>][y] = -<span class="number">1</span>;           <span class="comment">//记录被访问过</span></span><br><span class="line">                dfs(map, x - <span class="number">1</span>, y, endx, endy, cost % <span class="number">4</span> + <span class="number">1</span>, totalcost + cost);</span><br><span class="line">                map[x - <span class="number">1</span>][y] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (x + <span class="number">1</span> &lt; <span class="number">6</span> &amp;&amp; map[x + <span class="number">1</span>][y] &gt; <span class="number">0</span>) &#123;    <span class="comment">//右边边可以走 map[x1 + 1][y1]就是下一个位置</span></span><br><span class="line">            <span class="keyword">int</span> temp = map[x + <span class="number">1</span>][y];</span><br><span class="line">            <span class="keyword">int</span> cost = map[x + <span class="number">1</span>][y] * status; <span class="comment">//这一步的代价</span></span><br><span class="line">            <span class="keyword">if</span> (totalcost + cost &lt; mincost) &#123;</span><br><span class="line">                map[x + <span class="number">1</span>][y] = -<span class="number">1</span>;           <span class="comment">//记录被访问过</span></span><br><span class="line">                dfs(map, x + <span class="number">1</span>, y, endx, endy, cost % <span class="number">4</span> + <span class="number">1</span>, totalcost + cost);</span><br><span class="line">                map[x + <span class="number">1</span>][y] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (y - <span class="number">1</span> &gt;= <span class="number">0</span> &amp;&amp; map[x][y - <span class="number">1</span>] &gt; <span class="number">0</span>) &#123;    <span class="comment">//下边可以走 map[x1][y1 - 1]就是下一个位置</span></span><br><span class="line">            <span class="keyword">int</span> temp = map[x][y - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> cost = map[x][y - <span class="number">1</span>] * status; <span class="comment">//这一步的代价</span></span><br><span class="line">            <span class="keyword">if</span> (totalcost + cost &lt; mincost) &#123;</span><br><span class="line">                map[x][y - <span class="number">1</span>] = -<span class="number">1</span>;           <span class="comment">//记录被访问过</span></span><br><span class="line">                dfs(map, x, y - <span class="number">1</span>, endx, endy, cost % <span class="number">4</span> + <span class="number">1</span>, totalcost + cost);</span><br><span class="line">                map[x][y - <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (y + <span class="number">1</span> &lt; <span class="number">6</span> &amp;&amp; map[x][y + <span class="number">1</span>] &gt; <span class="number">0</span>) &#123;    <span class="comment">//上边可以走 map[x1][y1 + 1]就是下一个位置</span></span><br><span class="line">            <span class="keyword">int</span> temp = map[x][y + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> cost = map[x][y + <span class="number">1</span>] * status; <span class="comment">//这一步的代价</span></span><br><span class="line">            <span class="keyword">if</span> (totalcost + cost &lt; mincost) &#123;</span><br><span class="line">                map[x][y + <span class="number">1</span>] = -<span class="number">1</span>;           <span class="comment">//记录被访问过</span></span><br><span class="line">                dfs(map, x, y + <span class="number">1</span>, endx, endy, cost % <span class="number">4</span> + <span class="number">1</span>, totalcost + cost);</span><br><span class="line">                map[x][y + <span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Arost</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"># 动态规划</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/03/28/%E5%A4%A7%E6%95%B0%E8%AE%A1%E7%AE%97%E5%99%A8/">大数计算器</a>
+            
+            
+            <a class="next" rel="next" href="/2021/03/28/%E5%90%88%E5%94%B1%E9%98%9F%E5%BD%A2/">合唱队形</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Arost | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
